@@ -50,9 +50,27 @@ function LoginScreen({ navigation }) {
 
 function Dashboard({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Dashboard</Text>
-      <Button title="Go Back to Login Screen" onPress={() => navigation.navigate('LoginScreen')} />
+    <View style={styles.DBcontainer}>
+    <View style={{ flex: 1 }}>
+      <TouchableOpacity style={styles.dashboard_button} > 
+      <Button title="Test" color="red" onPress={() => navigation.navigate('LoginScreen')} />
+      </TouchableOpacity>
+      </View>
+      <View style={{ flex: 1 }}>
+      <TouchableOpacity style={styles.dashboard_button} > 
+      <Button title="Test" color="grey" onPress={() => navigation.navigate('LoginScreen')} />
+      </TouchableOpacity>
+       </View>
+    <View style={{ flex: 1 }}>
+      <TouchableOpacity style={styles.dashboard_button} > 
+      <Button title="Test" color="blue" onPress={() => navigation.navigate('LoginScreen')} />
+      </TouchableOpacity>
+    </View>
+    <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
+      <TouchableOpacity style={styles.dashboard_button} > 
+      <Button title="Test" color="#afeeee" onPress={() => navigation.navigate('LoginScreen')} /> 
+      </TouchableOpacity>
+    </View>
     </View>
   );
 }
@@ -74,6 +92,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  DBcontainer: {
+    flex: 1,
+    backgroundColor: "yellow",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -118,6 +142,19 @@ const styles = StyleSheet.create({
     height: 30,
     marginBottom: 30,
   },
+
+  dashboard_button: {
+    marginTop: 100,
+    width: 200,
+    borderRadius: 20,
+    height: 100,
+    margin: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 100,
+    backgroundColor: "white",
+  },
+
   loginBtn: {
     width: "80%",
     borderRadius: 25,
