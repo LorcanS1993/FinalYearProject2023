@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
+import * as WebBrowser from 'expo-web-browser';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,7 @@ function LoginScreen({ navigation }) {
         /> 
       </View> 
       <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text> 
+        <Text style={styles.forgot_button}>Register Here</Text> 
       </TouchableOpacity> 
       <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Dashboard')}>
         <Text style={styles.loginText}>LOGIN</Text> 
@@ -68,7 +69,7 @@ function Dashboard({ navigation }) {
     </View>
     <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
       <TouchableOpacity style={styles.dashboard_button} > 
-      <Button title="Test" color="#afeeee" onPress={() => navigation.navigate('LoginScreen')} /> 
+      <Button title="GitHub Account" color="#afeeee" onPress={() => WebBrowser.openBrowserAsync('https://github.com/LorcanS1993/FinalYearProject2023')}/> 
       </TouchableOpacity>
     </View>
     </View>
