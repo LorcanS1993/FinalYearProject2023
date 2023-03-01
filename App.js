@@ -69,7 +69,7 @@ function Dashboard({ navigation }) {
     </View>
     <View style={{ flex: 2, alignItems: 'center', justifyContent: 'center' }}>
       <TouchableOpacity style={styles.dashboard_button} > 
-      <Button title="GitHub Account" color="#afeeee" onPress={() => WebBrowser.openBrowserAsync('https://github.com/LorcanS1993/FinalYearProject2023')}/> 
+      <Button title="GitHub Account for Project Code" color="green" onPress={() => WebBrowser.openBrowserAsync('https://github.com/LorcanS1993/FinalYearProject2023')}/> 
       </TouchableOpacity>
     </View>
     </View>
@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
   },
   DBcontainer: {
     flex: 1,
-    backgroundColor: "yellow",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
   },
 
   inputView: {
-    backgroundColor: "#FFC0CB",
+    backgroundColor: "#add8e6",
     borderRadius: 30,
     width: "70%",
     height: 45,
@@ -140,8 +139,10 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   forgot_button: {
-    height: 30,
-    marginBottom: 30,
+    height: 40,
+    marginBottom: 20,
+    fontWeight: 'bold',
+
   },
 
   dashboard_button: {
@@ -162,7 +163,12 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 10,
-    backgroundColor: "#FF1493",
+    marginBottom: 50,
+    backgroundColor: "#191970",
+  },
+
+  loginText: {
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
