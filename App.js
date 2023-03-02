@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } fr
 import { NavigationContainer } from '@react-navigation/native';
 import * as WebBrowser from 'expo-web-browser';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ReactSpeedometer from "react-d3-speedometer"
 const Stack = createNativeStackNavigator();
 
 function LoginScreen({ navigation }) {
