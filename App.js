@@ -1,11 +1,12 @@
 // import * as React from 'react';
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button, Pressable, FlatList } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import * as WebBrowser from 'expo-web-browser';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ReactSpeedometer from "react-d3-speedometer"
+
+
 const Stack = createNativeStackNavigator();
 
 function LoginScreen({ navigation }) {
@@ -55,12 +56,12 @@ function Dashboard({ navigation }) {
     <View style={styles.DBcontainer}>
     <View style={{ flex: 1 }}>
       <TouchableOpacity style={styles.dashboard_button} > 
-      <Button title="Test" color="red" onPress={() => navigation.navigate('LoginScreen')} />
+      <Button title="Test Yourself" color="red" onPress={() => navigation.navigate('TestResults')} />
       </TouchableOpacity>
       </View>
       <View style={{ flex: 1 }}>
       <TouchableOpacity style={styles.dashboard_button} > 
-      <Button title="Test" color="grey" onPress={() => navigation.navigate('LoginScreen')} />
+      <Button title="Drink Driving Limits" color="grey" onPress={() => navigation.navigate('Information')} />
       </TouchableOpacity>
        </View>
     <View style={{ flex: 1 }}>
@@ -77,12 +78,97 @@ function Dashboard({ navigation }) {
   );
 }
 
+const TestResults = () => {
+  const [timesPressed, setTimesPressed] = useState(0);
+
+  let textLog = ''; 
+  if (timesPressed > 0) {
+  textLog = 'Calculating your BAC Levels...';
+  }
+
+  return (
+    <View style={styles.testcontainer}>    
+    <View style={styles.gaugeheader}>
+    <Text>Hello</Text>
+    </View>
+      <Pressable onPress={() => {
+        setTimesPressed(current => current + 1);
+        }}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
+          },
+          styles.wrapperCustom,
+        ]}>
+        {({pressed}) => (
+      <Text style={styles.text}>{pressed ? 'Hold for 5 Seconds' : 'Press Here to begin your Breathalyser Test'}</Text>
+        )}
+      </Pressable>
+      <View style={styles.logBox}>
+        <Text testID="pressable_press_console">{textLog}</Text>
+      </View>
+    </View>
+  );
+};
+
+const Information = () => {
+  const data = [
+    {
+      id: '1',
+      image: 'https://www.bootdey.com/image/1260x750/8A2BE2/000000',
+      title: 'Cider',
+      subtitle: 'Standard 4.5%'
+    },
+    {
+      id: '2',
+      image: 'https://www.bootdey.com/image/1260x750/5F9EA0/000000',
+      title: 'Beer',
+      subtitle: 'Standard 4%'
+    },
+    {
+      id: '3',
+      image: 'https://www.bootdey.com/image/1260x750/FF7F50/000000',
+      title: 'Wine',
+      subtitle: 'Standard 13%'
+    },
+    {
+      id: '4',
+      image: 'https://www.bootdey.com/image/1260x750/00FFFF/000000',
+      title: 'Spirits',
+      subtitle: 'Standard 40%'
+    },
+  ];
+
+  const renderItem = ({ item, index }) => {
+    return (
+      <View style={styles.itemContainer}>
+        <Image source={{ uri: item.image }} style={styles.infoImage} />
+        <View style={styles.textContainer}>
+          <Text style={styles.infoTitle}>{item.title}</Text>
+          <Text style={styles.subTitle}>{item.subtitle}</Text>
+        </View>
+      </View>
+    );
+  };
+
+  return (
+    <FlatList data={data} contentContainerStyle={styles.infoContainer}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      numColumns={2}
+    />
+  );
+};
+
+
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="LoginScreen">
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="TestResults" component={TestResults} />
+        <Stack.Screen name="Information" component={Information} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -171,5 +257,59 @@ const styles = StyleSheet.create({
   loginText: {
     fontWeight: 'bold',
     color: 'white',
+  },
+
+  testcontainer: {
+    flex: 2,
+    justifyContent: 'center',
+    backgroundColor: 'blue'
+  },
+
+  gaugeheader: {
+     flex: 1,
+     alignItems: "center",
+  },
+  
+  text: {
+    fontSize: 16,
+  },
+  wrapperCustom: {
+    borderRadius: 8,
+    padding: 6,
+  },
+  logBox: {
+    padding: 30,
+    margin: 10,
+    borderColor: '#f0f0f0',
+    backgroundColor: '#f9f9f9',
+  },
+
+  infoContainer: {
+    backgroundColor:'#fff'
+  },
+
+  itemContainer: {
+    flex: 1,
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection:  'column' 
+  },
+  infoImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 8,
+  },
+  textContainer: {
+    padding: 16,
+  },
+  infoTitle: {
+    fontWeight: 'bold',
+    fontSize: 25,
+  },
+  subTitle: {
+    fontSize: 14,
+    color: 'gray',
   },
 });
