@@ -115,25 +115,25 @@ const Information = () => {
   const data = [
     {
       id: '1',
-      image: 'https://www.bootdey.com/image/1260x750/8A2BE2/000000',
+      image: 'https://cdn1.iconfinder.com/data/icons/fast-food-cafe-colored/96/cider_apple_drinks_craft_96-512.png',
       title: 'Cider',
       subtitle: 'Standard 4.5%'
     },
     {
       id: '2',
-      image: 'https://www.bootdey.com/image/1260x750/5F9EA0/000000',
+      image: 'https://i.pinimg.com/736x/e5/2b/95/e52b9559ef1097f46060c9f25f11ae46.jpg',
       title: 'Beer',
       subtitle: 'Standard 4%'
     },
     {
       id: '3',
-      image: 'https://www.bootdey.com/image/1260x750/FF7F50/000000',
+      image: 'https://dl2.macupdate.com/images/icons256/17376.png?time=1638440528',
       title: 'Wine',
       subtitle: 'Standard 13%'
     },
     {
       id: '4',
-      image: 'https://www.bootdey.com/image/1260x750/00FFFF/000000',
+      image: 'https://cdn-icons-png.flaticon.com/128/920/920623.png',
       title: 'Spirits',
       subtitle: 'Standard 40%'
     },
