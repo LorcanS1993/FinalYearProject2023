@@ -15,6 +15,7 @@ export default function AccountLogin({ navigation }) {
 
   const clickEventListener = () => {
     Alert.alert('You are logged in!')
+    
   }
 
   return (
