@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Text, TextInput, TouchableOpacity, View, StyleSheet, ActivityIndicator, Alert } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../redux/actions/authActions";
-import { useToast } from "react-native-toast-message";
 import { getAuth, updateEmail } from "firebase/auth";
 
 const RegisterScreen = ({ navigation }) => {
