@@ -57,11 +57,11 @@ export default function Dashboard({ navigation }) {
           <Button
             title="GitHub Link to Code"
             color="green"
-            onPress={() => WebBrowser.openBrowserAsync("")}
+            onPress={() => WebBrowser.openBrowserAsync("https://github.com/LorcanS1993/FinalYearProject2023")}
           />
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <TouchableOpacity style={styles.dashboard_button}>
           <Button
             title="Logout"
@@ -83,13 +83,13 @@ const styles = StyleSheet.create({
   },
   dashboard_button: {
     marginTop: 100,
-    width: 200,
+    width: 300,
     borderRadius: 20,
     height: 100,
     margin: 100,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 100,
+    marginBottom: 50,
     backgroundColor: "white",
   },
 });

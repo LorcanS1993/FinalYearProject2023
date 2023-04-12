@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
   listContainer: {
     alignItems: "center",
   },
-  /******** card **************/
   card: {
     shadowColor: "#00000021",
     shadowOffset: {
