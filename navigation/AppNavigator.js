@@ -1,7 +1,7 @@
 // import * as React from 'react';
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator, Button, Alert, Pressable, FlatList, } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator, Button, Alert, Pressable, FlatList, Animated } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import * as WebBrowser from "expo-web-browser";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -18,6 +18,7 @@ import { login } from "../redux/actions/authActions";
 const Stack = createNativeStackNavigator();
 
 function LoginScreen({ navigation }) {
+  const [fadeAnim] = useState(new Animated.Value(0));
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,15 +47,22 @@ function LoginScreen({ navigation }) {
     dispatch(login(email, password));
   };
 
+  useEffect(() => {
+    Animated.spring(fadeAnim, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={require("../assets/ProjectLogo.png")}
       />
-      <View style={styles.title}>
-        <Text>Welcome</Text>
-      </View>
+      <Animated.View style={{ opacity: fadeAnim }}>
+        <Text style={styles.Welcometitle}>Welcome</Text>
+      </Animated.View>
       <StatusBar style="auto" />
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
@@ -154,7 +162,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontWeight: "bold",
   },
-
+  Welcometitle: {
+    marginBottom: 55,
+    fontSize: 30,
+    fontWeight: "bold",
+  },  
   loginBtn: {
     width: "80%",
     borderRadius: 25,
@@ -164,7 +176,6 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     backgroundColor: "#191970",
   },
-
   loginText: {
     fontWeight: "bold",
     color: "white",
