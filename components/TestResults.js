@@ -28,18 +28,6 @@ const TestResults = () => {
     }).start();
   }
 
-  const refreshData = () => {
-    const dbRef = ref(database, '/AlcoholTest/mgL');
-    get(dbRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        setData(snapshot.val());
-        animate();
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-  }
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>YOUR BAC LEVEL IS</Text>
