@@ -1,9 +1,5 @@
 import { auth, db } from "../../config/firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
@@ -20,7 +16,7 @@ export const signup = (email, password, name) => {
         const uid = response.user.uid;
         const data = {
           email,
-          displayName: name, 
+          displayName: name,
         };
         const usersRef = doc(db, "users", uid);
         setDoc(usersRef, data)
