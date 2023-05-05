@@ -20,7 +20,7 @@ export const signup = (email, password, name) => {
         const uid = response.user.uid;
         const data = {
           email,
-          displayName: name, // add fullName field to user object
+          displayName: name, 
         };
         const usersRef = doc(db, "users", uid);
         setDoc(usersRef, data)
